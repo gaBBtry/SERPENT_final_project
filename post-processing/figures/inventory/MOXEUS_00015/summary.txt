@@ -1,0 +1,79 @@
+Résumé des statistiques d'inventaire pour la simulation MOXEUS_00015
+=================================================================
+
+Temps total: 2255.0 jours
+Burnup final: 67.7 MWd/kgU
+
+Plutonium Total:
+  Minimum       = 2.980%
+  Maximum       = 4.008%
+  Moyenne       = 3.565%
+  Valeur finale = 2.980%
+
+Valeurs finales des isotopes de plutonium:
+  Pu-238     = 0.129084%
+  Pu-239     = 0.745445%
+  Pu-240     = 0.598853%
+  Pu-241     = 0.337962%
+  Pu-242     = 1.168600%
+
+Valeurs maximales des isotopes de plutonium:
+  Pu-238     = 0.320001%
+
+  Pu-239     = 0.812350%
+
+  Pu-240     = 1.600004%
+
+  Pu-241     = 0.460599%
+
+  Pu-242     = 1.400003%
+
+Uranium Total:
+  Minimum       = 88.581%
+  Maximum       = 96.000%
+  Moyenne       = 92.319%
+  Valeur finale = 88.581%
+Valeurs finales des isotopes d'uranium:
+  U-234      = 0.004996%
+  U-235      = 0.122259%
+  U-236      = 0.173017%
+  U-238      = 88.281156%
+
+Valeurs maximales des isotopes d'uranium:
+  U-234      = 0.004996%
+
+  U-235      = 1.300001%
+
+  U-236      = 0.174097%
+
+  U-238      = 94.699991%
+
+Actinides mineurs Total:
+  Minimum       = 0.000%
+  Maximum       = 0.788%
+  Moyenne       = 0.409%
+  Valeur finale = 0.788%
+
+Valeurs finales des actinides mineurs:
+  Np-237     = 0.046944%
+  Np-239     = 0.008216%
+  Am-241     = 0.018940%
+  Am-242m    = 0.000382%
+  Am-243     = 0.316257%
+  Cm-242     = 0.008811%
+  Cm-243     = 0.000448%
+  Cm-244     = 0.344953%
+  Cm-245     = 0.031745%
+  Cm-246     = 0.010914%
+
+Valeurs maximales des actinides mineurs:
+  Np-237     = 0.046944%
+  Np-239     = 0.008216%
+  Am-241     = 0.023657%
+  Am-242m    = 0.000487%
+  Am-243     = 0.316257%
+  Cm-242     = 0.009219%
+  Cm-243     = 0.000448%
+  Cm-244     = 0.344953%
+  Cm-245     = 0.031745%
+  Cm-246     = 0.010914%

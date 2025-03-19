@@ -1,0 +1,23 @@
+=== Résumé de l'analyse pour MOXEUS_00007 ===
+
+k_inf moyen: 0.82517
+k_inf min: 0.71917
+k_inf max: 0.86995 (à 605.0 jours / 18.1 MWd/kgU)
+Burnup final: 66.8 MWd/kgU
+
+Points d'inflexion significatifs:
+- À 35.0 jours / 1.1 MWd/kgU: k_inf = 0.77286
+
+Top 5 des isotopes ayant la plus forte influence positive:
+- Pu-241: coefficient = 0.936
+- Pu-239: coefficient = 0.803
+- Am-241: coefficient = 0.516
+- Np-239: coefficient = 0.458
+- Am-242m: coefficient = 0.447
+
+Top 5 des isotopes ayant la plus forte influence négative:
+- Cm-246: coefficient = -0.311
+- U-235: coefficient = -0.277
+- Pu-238: coefficient = -0.245
+- Pu-240: coefficient = -0.243
+- Cm-245: coefficient = -0.163

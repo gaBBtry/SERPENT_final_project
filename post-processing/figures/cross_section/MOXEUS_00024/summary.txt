@@ -1,0 +1,249 @@
+Résumé des statistiques des sections efficaces pour MOXEUS_00024
+======================================================================
+
+Temps total      = 2255.0 jours
+Burnup final     = 67.7 MWd/kgU
+
+Statistiques détaillées par isotope:
+----------------------------------------------------------------------
+
+Isotope: Am-241 (ZAI: 952410)
+  Section efficace de capture (n,γ):
+    Minimum        = 4.05193e+01 barns
+    Maximum        = 4.62907e+01 barns
+    Moyenne        = 4.22396e+01 barns
+    Ratio Max/Min  = 1.14244
+  Section efficace de fission (n,f):
+    Minimum        = 8.61420e-01 barns
+    Maximum        = 8.89911e-01 barns
+    Moyenne        = 8.71077e-01 barns
+    Ratio Max/Min  = 1.03307
+
+Isotope: Am-242 (ZAI: 952420)
+  Section efficace de capture (n,γ):
+    Minimum        = 6.48159e+00 barns
+    Maximum        = 8.21947e+00 barns
+    Moyenne        = 7.16160e+00 barns
+    Ratio Max/Min  = 1.26813
+  Section efficace de fission (n,f):
+    Minimum        = 4.65430e+01 barns
+    Maximum        = 6.28391e+01 barns
+    Moyenne        = 5.27846e+01 barns
+    Ratio Max/Min  = 1.35013
+
+Isotope: Am-242m (ZAI: 952421)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.93011e+01 barns
+    Maximum        = 2.90343e+01 barns
+    Moyenne        = 2.30055e+01 barns
+    Ratio Max/Min  = 1.50428
+  Section efficace de fission (n,f):
+    Minimum        = 1.05116e+02 barns
+    Maximum        = 1.54765e+02 barns
+    Moyenne        = 1.23938e+02 barns
+    Ratio Max/Min  = 1.47233
+
+Isotope: Am-243 (ZAI: 952430)
+  Section efficace de capture (n,γ):
+    Minimum        = 3.28154e+01 barns
+    Maximum        = 3.91359e+01 barns
+    Moyenne        = 3.52937e+01 barns
+    Ratio Max/Min  = 1.19261
+  Section efficace de fission (n,f):
+    Minimum        = 4.85850e-01 barns
+    Maximum        = 5.02332e-01 barns
+    Moyenne        = 4.93809e-01 barns
+    Ratio Max/Min  = 1.03392
+
+Isotope: Cm-242 (ZAI: 962420)
+  Section efficace de capture (n,γ):
+    Minimum        = 2.99042e+00 barns
+    Maximum        = 3.40988e+00 barns
+    Moyenne        = 3.24134e+00 barns
+    Ratio Max/Min  = 1.14027
+  Section efficace de fission (n,f):
+    Minimum        = 1.15413e+00 barns
+    Maximum        = 1.18199e+00 barns
+    Moyenne        = 1.16919e+00 barns
+    Ratio Max/Min  = 1.02414
+
+Isotope: Cm-243 (ZAI: 962430)
+  Section efficace de capture (n,γ):
+    Minimum        = 5.33881e+00 barns
+    Maximum        = 6.08007e+00 barns
+    Moyenne        = 5.62391e+00 barns
+    Ratio Max/Min  = 1.13884
+  Section efficace de fission (n,f):
+    Minimum        = 3.92951e+01 barns
+    Maximum        = 4.30205e+01 barns
+    Moyenne        = 4.07105e+01 barns
+    Ratio Max/Min  = 1.09481
+
+Isotope: Cm-244 (ZAI: 962440)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.09145e+01 barns
+    Maximum        = 1.34007e+01 barns
+    Moyenne        = 1.23041e+01 barns
+    Ratio Max/Min  = 1.22779
+  Section efficace de fission (n,f):
+    Minimum        = 9.53532e-01 barns
+    Maximum        = 9.85308e-01 barns
+    Moyenne        = 9.69178e-01 barns
+    Ratio Max/Min  = 1.03332
+
+Isotope: Cm-245 (ZAI: 962450)
+  Section efficace de capture (n,γ):
+    Minimum        = 4.54173e+00 barns
+    Maximum        = 5.99349e+00 barns
+    Moyenne        = 5.10017e+00 barns
+    Ratio Max/Min  = 1.31965
+  Section efficace de fission (n,f):
+    Minimum        = 3.10916e+01 barns
+    Maximum        = 4.03856e+01 barns
+    Moyenne        = 3.46600e+01 barns
+    Ratio Max/Min  = 1.29892
+
+Isotope: Cm-246 (ZAI: 962460)
+  Section efficace de capture (n,γ):
+    Minimum        = 2.72253e+00 barns
+    Maximum        = 2.96232e+00 barns
+    Moyenne        = 2.84723e+00 barns
+    Ratio Max/Min  = 1.08808
+  Section efficace de fission (n,f):
+    Minimum        = 6.32660e-01 barns
+    Maximum        = 6.41756e-01 barns
+    Moyenne        = 6.36979e-01 barns
+    Ratio Max/Min  = 1.01438
+
+Isotope: Np-237 (ZAI: 932370)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.90878e+01 barns
+    Maximum        = 2.07039e+01 barns
+    Moyenne        = 1.96993e+01 barns
+    Ratio Max/Min  = 1.08467
+  Section efficace de fission (n,f):
+    Minimum        = 5.87123e-01 barns
+    Maximum        = 6.03444e-01 barns
+    Moyenne        = 5.95944e-01 barns
+    Ratio Max/Min  = 1.02780
+
+Isotope: Np-239 (ZAI: 932390)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.18449e+01 barns
+    Maximum        = 1.26483e+01 barns
+    Moyenne        = 1.21752e+01 barns
+    Ratio Max/Min  = 1.06783
+  Section efficace de fission (n,f):
+    Minimum        = 6.86860e-01 barns
+    Maximum        = 7.05229e-01 barns
+    Moyenne        = 6.97136e-01 barns
+    Ratio Max/Min  = 1.02674
+
+Isotope: Pu-238 (ZAI: 942380)
+  Section efficace de capture (n,γ):
+    Minimum        = 7.33413e+00 barns
+    Maximum        = 9.85348e+00 barns
+    Moyenne        = 8.33007e+00 barns
+    Ratio Max/Min  = 1.34351
+  Section efficace de fission (n,f):
+    Minimum        = 2.07015e+00 barns
+    Maximum        = 2.14538e+00 barns
+    Moyenne        = 2.10442e+00 barns
+    Ratio Max/Min  = 1.03634
+
+Isotope: Pu-239 (ZAI: 942390)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.09551e+01 barns
+    Maximum        = 1.62500e+01 barns
+    Moyenne        = 1.30440e+01 barns
+    Ratio Max/Min  = 1.48333
+  Section efficace de fission (n,f):
+    Minimum        = 1.97832e+01 barns
+    Maximum        = 2.89995e+01 barns
+    Moyenne        = 2.33903e+01 barns
+    Ratio Max/Min  = 1.46586
+
+Isotope: Pu-240 (ZAI: 942400)
+  Section efficace de capture (n,γ):
+    Minimum        = 3.20395e+01 barns
+    Maximum        = 3.91092e+01 barns
+    Moyenne        = 3.41321e+01 barns
+    Ratio Max/Min  = 1.22066
+  Section efficace de fission (n,f):
+    Minimum        = 6.44164e-01 barns
+    Maximum        = 6.63302e-01 barns
+    Moyenne        = 6.54189e-01 barns
+    Ratio Max/Min  = 1.02971
+
+Isotope: Pu-241 (ZAI: 942410)
+  Section efficace de capture (n,γ):
+    Minimum        = 8.12974e+00 barns
+    Maximum        = 1.16170e+01 barns
+    Moyenne        = 9.52914e+00 barns
+    Ratio Max/Min  = 1.42895
+  Section efficace de fission (n,f):
+    Minimum        = 2.46343e+01 barns
+    Maximum        = 3.35796e+01 barns
+    Moyenne        = 2.81274e+01 barns
+    Ratio Max/Min  = 1.36312
+
+Isotope: Pu-242 (ZAI: 942420)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.43573e+01 barns
+    Maximum        = 2.25614e+01 barns
+    Moyenne        = 1.73174e+01 barns
+    Ratio Max/Min  = 1.57142
+  Section efficace de fission (n,f):
+    Minimum        = 5.11234e-01 barns
+    Maximum        = 5.26207e-01 barns
+    Moyenne        = 5.19165e-01 barns
+    Ratio Max/Min  = 1.02929
+
+Isotope: U-234 (ZAI: 922340)
+  Section efficace de capture (n,γ):
+    Minimum        = 1.35254e+01 barns
+    Maximum        = 1.62299e+01 barns
+    Moyenne        = 1.43605e+01 barns
+    Ratio Max/Min  = 1.19996
+  Section efficace de fission (n,f):
+    Minimum        = 5.51653e-01 barns
+    Maximum        = 5.67922e-01 barns
+    Moyenne        = 5.60801e-01 barns
+    Ratio Max/Min  = 1.02949
+
+Isotope: U-235 (ZAI: 922350)
+  Section efficace de capture (n,γ):
+    Minimum        = 4.05969e+00 barns
+    Maximum        = 4.80270e+00 barns
+    Moyenne        = 4.35941e+00 barns
+    Ratio Max/Min  = 1.18302
+  Section efficace de fission (n,f):
+    Minimum        = 1.14557e+01 barns
+    Maximum        = 1.47433e+01 barns
+    Moyenne        = 1.27162e+01 barns
+    Ratio Max/Min  = 1.28698
+
+Isotope: U-236 (ZAI: 922360)
+  Section efficace de capture (n,γ):
+    Minimum        = 5.79596e+00 barns
+    Maximum        = 8.16648e+00 barns
+    Moyenne        = 6.62853e+00 barns
+    Ratio Max/Min  = 1.40900
+  Section efficace de fission (n,f):
+    Minimum        = 3.15681e-01 barns
+    Maximum        = 3.49162e-01 barns
+    Moyenne        = 3.28526e-01 barns
+    Ratio Max/Min  = 1.10606
+
+Isotope: U-238 (ZAI: 922380)
+  Section efficace de capture (n,γ):
+    Minimum        = 7.75137e-01 barns
+    Maximum        = 8.21821e-01 barns
+    Moyenne        = 7.96713e-01 barns
+    Ratio Max/Min  = 1.06023
+  Section efficace de fission (n,f):
+    Minimum        = 1.17028e-01 barns
+    Maximum        = 1.21280e-01 barns
+    Moyenne        = 1.19277e-01 barns
+    Ratio Max/Min  = 1.03633
+

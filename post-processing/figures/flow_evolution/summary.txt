@@ -1,0 +1,255 @@
+Résumé des statistiques de flux neutronique pour toutes les simulations
+=================================================================
+
+Simulation: MOXEUS_00001
+  Flux moyen       = 4.22947e+16
+  Écart-type       = 7.87460e+15
+  Flux min         = 2.91736e+16
+  Flux max         = 5.42999e+16
+  Ratio max/min    = 1.86127
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00002
+  Flux moyen       = 3.94431e+16
+  Écart-type       = 4.27194e+15
+  Flux min         = 3.21172e+16
+  Flux max         = 4.66367e+16
+  Ratio max/min    = 1.45208
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00003
+  Flux moyen       = 4.13858e+16
+  Écart-type       = 3.71917e+15
+  Flux min         = 3.47735e+16
+  Flux max         = 4.75095e+16
+  Ratio max/min    = 1.36626
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00004
+  Flux moyen       = 5.77339e+16
+  Écart-type       = 3.06315e+15
+  Flux min         = 5.59765e+16
+  Flux max         = 6.78522e+16
+  Ratio max/min    = 1.21216
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00005
+  Flux moyen       = 6.09614e+16
+  Écart-type       = 1.38883e+16
+  Flux min         = 5.58735e+16
+  Flux max         = 1.11421e+17
+  Ratio max/min    = 1.99417
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00006
+  Flux moyen       = 4.01214e+16
+  Écart-type       = 6.50259e+15
+  Flux min         = 2.92726e+16
+  Flux max         = 5.04056e+16
+  Ratio max/min    = 1.72194
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00007
+  Flux moyen       = 4.97560e+16
+  Écart-type       = 2.93928e+15
+  Flux min         = 4.66790e+16
+  Flux max         = 5.80129e+16
+  Ratio max/min    = 1.24281
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00008
+  Flux moyen       = 3.32231e+16
+  Écart-type       = 3.99900e+15
+  Flux min         = 2.65552e+16
+  Flux max         = 4.02876e+16
+  Ratio max/min    = 1.51713
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00009
+  Flux moyen       = 4.59422e+16
+  Écart-type       = 2.22937e+15
+  Flux min         = 4.40609e+16
+  Flux max         = 5.27064e+16
+  Ratio max/min    = 1.19622
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00010
+  Flux moyen       = 2.79492e+16
+  Écart-type       = 2.59614e+15
+  Flux min         = 2.36159e+16
+  Flux max         = 3.23345e+16
+  Ratio max/min    = 1.36918
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00011
+  Flux moyen       = 4.30676e+16
+  Écart-type       = 1.69780e+15
+  Flux min         = 4.17849e+16
+  Flux max         = 4.77403e+16
+  Ratio max/min    = 1.14253
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00012
+  Flux moyen       = 5.07089e+16
+  Écart-type       = 5.67952e+15
+  Flux min         = 3.82329e+16
+  Flux max         = 5.66380e+16
+  Ratio max/min    = 1.48139
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00013
+  Flux moyen       = 5.14296e+16
+  Écart-type       = 4.47818e+15
+  Flux min         = 4.30737e+16
+  Flux max         = 5.65079e+16
+  Ratio max/min    = 1.31189
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00014
+  Flux moyen       = 3.71798e+16
+  Écart-type       = 5.60784e+15
+  Flux min         = 2.80157e+16
+  Flux max         = 4.67925e+16
+  Ratio max/min    = 1.67022
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00015
+  Flux moyen       = 4.53707e+16
+  Écart-type       = 2.26562e+15
+  Flux min         = 4.25176e+16
+  Flux max         = 5.00228e+16
+  Ratio max/min    = 1.17652
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00016
+  Flux moyen       = 3.19619e+16
+  Écart-type       = 3.64005e+15
+  Flux min         = 2.59670e+16
+  Flux max         = 3.83200e+16
+  Ratio max/min    = 1.47572
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00017
+  Flux moyen       = 4.31161e+16
+  Écart-type       = 1.15450e+15
+  Flux min         = 4.15977e+16
+  Flux max         = 4.54479e+16
+  Ratio max/min    = 1.09256
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00018
+  Flux moyen       = 2.73468e+16
+  Écart-type       = 2.45657e+15
+  Flux min         = 2.32950e+16
+  Flux max         = 3.15253e+16
+  Ratio max/min    = 1.35331
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00019
+  Flux moyen       = 4.12130e+16
+  Écart-type       = 9.40121e+14
+  Flux min         = 4.02657e+16
+  Flux max         = 4.37616e+16
+  Ratio max/min    = 1.08682
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00020
+  Flux moyen       = 4.15683e+16
+  Écart-type       = 7.70585e+15
+  Flux min         = 2.88484e+16
+  Flux max         = 5.35359e+16
+  Ratio max/min    = 1.85577
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00021
+  Flux moyen       = 4.20635e+16
+  Écart-type       = 7.34822e+15
+  Flux min         = 3.02874e+16
+  Flux max         = 5.35565e+16
+  Ratio max/min    = 1.76828
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00022
+  Flux moyen       = 3.33970e+16
+  Écart-type       = 4.31152e+15
+  Flux min         = 2.64611e+16
+  Flux max         = 4.11908e+16
+  Ratio max/min    = 1.55665
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00023
+  Flux moyen       = 3.96961e+16
+  Écart-type       = 2.72948e+15
+  Flux min         = 3.61178e+16
+  Flux max         = 4.52301e+16
+  Ratio max/min    = 1.25229
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00024
+  Flux moyen       = 3.00529e+16
+  Écart-type       = 3.10485e+15
+  Flux min         = 2.48514e+16
+  Flux max         = 3.53630e+16
+  Ratio max/min    = 1.42298
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00025
+  Flux moyen       = 3.91344e+16
+  Écart-type       = 1.27895e+15
+  Flux min         = 3.76811e+16
+  Flux max         = 4.19095e+16
+  Ratio max/min    = 1.11222
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00026
+  Flux moyen       = 2.63661e+16
+  Écart-type       = 2.24624e+15
+  Flux min         = 2.26462e+16
+  Flux max         = 3.01872e+16
+  Ratio max/min    = 1.33299
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00027
+  Flux moyen       = 3.83412e+16
+  Écart-type       = 5.58023e+14
+  Flux min         = 3.76166e+16
+  Flux max         = 3.97556e+16
+  Ratio max/min    = 1.05686
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+
+Simulation: MOXEUS_00028
+  Flux moyen       = 3.38555e+16
+  Écart-type       = 2.55667e+15
+  Flux min         = 2.94520e+16
+  Flux max         = 3.83124e+16
+  Ratio max/min    = 1.30084
+  Temps total      = 2255.0 jours
+  Burnup final     = 67.7 MWd/kgU
+

@@ -1,0 +1,188 @@
+set title "MOXEUS_00011"
+
+%----------------------------------------------------------------------------
+% Définition de la géométrie des pins
+%----------------------------------------------------------------------------
+
+% --- Pins de combustible MOXEUS (pour les différentes compositions):
+pin 1
+fuel    0.410   % Rayon de la pastille (Table 2.8)
+clad    0.475   % Rayon externe de la gaine (Table 2.8)
+water
+
+% --- Tubes guides sans insertions des grappes de contrôle:
+pin 2
+water   0.550   % Rayon interne des tubes guides (Table 2.8)
+clad    0.616   % Rayon externe des tubes guides (Table 2.8)
+water
+
+% --- Tube d'instrumentation (même structure que les tubes guides):
+pin 3
+water   0.550   % Rayon interne du tube d'instrumentation (Table 2.8)
+clad    0.616   % Rayon externe du tube d'instrumentation (Table 2.8)
+water
+
+%----------------------------------------------------------------------------
+% Définition du réseau de l'assemblage
+%----------------------------------------------------------------------------
+
+% Création d'un réseau 17x17 avec 264 crayons de combustible, 24 tubes guides et 1 tube d'instrumentation
+% Le pas du réseau est de 1.262 cm (Table 2.8)
+
+lat 10 1 0.0 0.0 17 17 1.262
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1
+1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 2 1 1 2 1 1 3 1 1 2 1 1 2 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1
+1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+%----------------------------------------------------------------------------
+% Définition du contour de l'assemblage
+%----------------------------------------------------------------------------
+
+% Surface de type cuboid pour définir les limites de l'assemblage (hauteur = 366 cm)
+surf 100 cuboid -10.727 10.727 -10.727 10.727 -183.0 183.0  % Cuboid englobant l'assemblage
+
+% Définition des cellules
+cell 1  0  fill 10  -100    % Assemblage avec hauteur active de 366 cm
+cell 99 0  outside   100    % Extérieur (vide)
+
+%----------------------------------------------------------------------------
+% Définition des matériaux - PLUSIEURS COMPOSITIONS MOXEUS
+%----------------------------------------------------------------------------
+
+% --- Composition du combustible à modifier pour chaque scénario
+mat fuel    -10.02 burn 1 rgb 200 0 0   % Densité du combustible: 10.02 g/cm³
+92235.09c   0.00225                        % 4.5% de U235 (proche limite haute)
+92238.09c   0.83775                        % 80.5% U238 (pour somme = 1 avec U235)
+94238.09c   0.0128                      % 5% du vecteur Pu * 15% teneur en Pu
+94239.09c   0.0272                       % 30% du vecteur Pu * 15% teneur en Pu
+94240.09c   0.064                      % 30% du vecteur Pu * 15% teneur en Pu
+94241.09c   0.0                       % 15% du vecteur Pu * 15% teneur en Pu
+94242.09c   0.056                      % 20% du vecteur Pu * 15% teneur en Pu
+8016.09c    2.0                         % Oxygène (ratio stœchiométrique)
+
+% --- Gaine (Zircaloy 4):
+mat clad    -5.763 rgb 56 62 66 % Densité de la gaine: 5.763 g/cm³ (Table 2.9)
+40000.06c   0.9849              % Zirconium
+50000.06c   0.0145              % Étain
+26000.06c   0.0022              % Fer
+24000.06c   0.0011              % Chrome
+72000.06c   0.0001              % Hafnium
+
+% --- Eau (avec bore):
+mat water   -0.716 moder lwtr 1001 rgb 0 200 255    % Densité de l'eau: 0.716 g/cm³ (Table 2.9)
+1001.06c    2.0                                     % Hydrogène
+8016.06c    1.0                                     % Oxygène
+5010.06c    1.97e-5                                 % Bore-10 (600 ppm, 19.7% naturel)
+5011.06c    7.93e-5                                 % Bore-11 (600 ppm, 80.3% naturel)
+
+% --- Définition de la thermalisation des neutrons dans l'eau
+therm lwtr lwj3.11t
+
+%----------------------------------------------------------------------------
+% Paramètres de la simulation
+%----------------------------------------------------------------------------
+
+% --- Bibliothèque de sections efficaces (JEFF 3.1.1 comme indiqué dans le tableau 2.7)
+set acelib "/home/serpent/xs/jeff311/sss_jeff311u.xsdata"
+
+% --- Conditions aux limites réfléchissantes (assemblage infini)
+set bc 3
+
+% --- Population de neutrons et cycles de criticité
+% Paramètres du tableau 2.7
+set pop 10000 20 5 % 10000 neutrons par cycle, 20 cycles actifs, 5 cycles inactifs
+
+% --- Affichage des géométries
+%plot 1 1000 1000
+%plot 3 1000 1000
+%mesh 1 1000 1000
+%mesh 3 1000 1000
+
+% --- Bibliothèques de décroissance et de rendements de fission (JEFF 3.1.1)
+set declib "/home/serpent/xs/jeff311/sss_jeff311.dec"
+set nfylib "/home/serpent/xs/jeff311/sss_jeff311.nfy"
+
+% --- Réduction de la grille d'énergie
+set egrid 5E-5 1E-9 15.0
+
+% --- Options pour la simulation du burnup
+set bumode  2       % Méthode CRAM (optimale pour la précision)
+set pcc     1       % Calcul prédicteur-correcteur activé
+set xscalc  2       % Sections efficaces du spectre
+set fpcut   1e-6    % Seuil sur les rendements de fission (Tableau 2.7)
+set stabcut 1e-12   % Seuil pour les noyaux stables
+
+% --- Activation de l'équilibrage de charge pour les calculs parallèles
+set opti 1
+
+% --- Paramètres pour le burnup
+% Densité de puissance thermique de 30 W/g d'oxyde (Table 2.9)
+set powdens 30.0e-3
+
+%----------------------------------------------------------------------------
+% Définition des pas de temps d'irradiation
+%----------------------------------------------------------------------------
+
+% Découpage fin pour les 5 premiers jours (équilibre du Xe-135)
+% puis découpage pour atteindre 2205 jours d'irradiation (≈ 6 ans ou 75 GWj/t)
+% 80 pas de temps au total comme indiqué dans l'énoncé
+
+dep daystep
+% Découpage fin pour les 5 premiers jours (équilibre du Xe-135)
+1 1 1 1 1
+% 75 pas de 30 jours pour le reste (2250 jours au total, légèrement supérieur à 2205)
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30 30 30 30 30 30
+30 30 30 30 30
+
+%----------------------------------------------------------------------------
+% Définition de l'inventaire des isotopes à suivre
+%----------------------------------------------------------------------------
+
+set inventory
+% Uranium et isotopes du Plutonium
+922340 922350 922360 922380                         % Uranium (U234, U235, U236, U238)
+942380 942390 942400 942410 942420 942430 942440    % Plutonium (tous les isotopes)
+
+% Actinides mineurs - importants pour le bilan du multi-recyclage
+932370 932390                                       % Neptunium (Np-237, Np-239)
+952410 952420 952421 952430 952440 952441           % Américium (tous les isotopes)
+962420 962430 962440 962450 962460 962470           % Curium (Cm-242 à Cm-247)
+
+% Produits de fission - suivi particulier du Xe-135
+531290 531310 531350                                % Iode (I-129, I-131, I-135)
+541310 541320 541330 541340 541350 541360           % Xénon (tous les isotopes pertinents)
+551330 551340 551350 551370                         % Césium (Cs-133, Cs-134, Cs-135, Cs-137)
+
+% Autres produits de fission importants
+400900 400910 400920 400940 400960                  % Zirconium (isotopes stables)
+420950 420970 420980 420990                         % Molybdène
+430990                                              % Technétium-99
+441010 441020 441030 441040 441060                  % Ruthénium
+451030                                              % Rhodium-103
+471070 471090                                       % Argent (Ag-107, Ag-109)
+481130                                              % Cadmium-113
+601430 601450                                       % Néodyme (Nd-143, Nd-145)
+611470 611480 611490                                % Prométhium (Pm-147, Pm-148, Pm-149)
+621470 621490 621500 621510 621520 621530 621540    % Samarium (tous les isotopes)
+631510 631520 631530 631540 631550 631560 631570    % Europium (tous les isotopes)
+641550 641560 641570 641580 641600                  % Gadolinium (isotopes neutrophages)

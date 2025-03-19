@@ -1,0 +1,25 @@
+Résumé des contributions aux fissions - MOXEUS_00015
+============================================================
+
+Nombre total de réactions de fission: 56158
+
+
+Contributions aux fissions par isotope:
+  Pu-239: 54.95%
+  Pu-241: 26.53%
+  U-238: 9.67%
+  U-235: 3.90%
+  Cm-245: 2.88%
+  Pu-242: 0.55%
+  Pu-240: 0.37%
+  Cm-244: 0.33%
+  Pu-238: 0.30%
+  Am-242m: 0.20%
+  Am-243: 0.14%
+
+Isotopes dominants (>1%):
+  Pu-239: 54.95%
+  Pu-241: 26.53%
+  U-238: 9.67%
+  U-235: 3.90%
+  Cm-245: 2.88%
