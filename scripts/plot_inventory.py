@@ -5,6 +5,8 @@ import os
 import glob
 from matplotlib.ticker import MaxNLocator, AutoMinorLocator
 from scipy.interpolate import interp1d
+import pandas as pd
+import seaborn as sns
 
 # Fonction pour nettoyer une ligne en supprimant les commentaires
 def clean_line(line):
@@ -388,6 +390,250 @@ def process_simulation(sim_dir):
     
     return stats
 
+def compare_pu_incineration(simulation_stats):
+    """Compare plutonium incineration performance across different simulations."""
+    if not simulation_stats:
+        print("Aucune donnée de simulation disponible pour la comparaison.")
+        return
+    
+    # Create output directory
+    os.makedirs('figures/comparison', exist_ok=True)
+    
+    # Extract sim names and plutonium data
+    sim_names = list(simulation_stats.keys())
+    
+    # Prepare dataframes for comparisons
+    pu_final_df = pd.DataFrame(index=sim_names)
+    pu_reduction_df = pd.DataFrame(index=sim_names)
+    pu_isotope_final_df = pd.DataFrame(index=sim_names)
+    pu_efficiency_df = pd.DataFrame(index=sim_names)  # Nouvelle dataframe pour les métriques d'efficacité
+    
+    # Fill dataframes with data
+    for sim in sim_names:
+        stats = simulation_stats[sim]
+        
+        # Final plutonium total percentage
+        pu_final_df.loc[sim, 'Total Pu (%)'] = stats['plutonium_total']['final']
+        
+        # Calculate plutonium reduction (initial - final)
+        initial_pu = stats['plutonium_total']['max']  # Using max as proxy for initial in some cases
+        final_pu = stats['plutonium_total']['final']
+        reduction = initial_pu - final_pu
+        reduction_percent = (reduction / initial_pu) * 100 if initial_pu > 0 else 0
+        
+        pu_reduction_df.loc[sim, 'Reduction (%)'] = reduction_percent
+        pu_reduction_df.loc[sim, 'Absolute Reduction (%)'] = reduction
+        
+        # Get final values for each Pu isotope
+        for isotope in ['Pu-238', 'Pu-239', 'Pu-240', 'Pu-241', 'Pu-242']:
+            if isotope in stats['plutonium']['final_values']:
+                pu_isotope_final_df.loc[sim, isotope] = stats['plutonium']['final_values'][isotope]
+            else:
+                pu_isotope_final_df.loc[sim, isotope] = 0
+        
+        # Nouvelles métriques d'efficacité
+        # 1. Taux d'incinération par unité de burnup
+        if 'final_burnup' in stats and stats['final_burnup'] > 0:
+            incineration_rate = reduction_percent / stats['final_burnup']
+            pu_efficiency_df.loc[sim, 'Taux incinération (%/MWd/kgU)'] = incineration_rate
+        else:
+            pu_efficiency_df.loc[sim, 'Taux incinération (%/MWd/kgU)'] = 0
+            
+        # 2. Efficacité de transmutation: Pu éliminé / AM produits
+        if 'actinides_mineurs_total' in stats:
+            initial_am = stats['actinides_mineurs_total'].get('min', 0)  # Utiliser min comme approximation de la valeur initiale
+            final_am = stats['actinides_mineurs_total'].get('final', 0)
+            am_production = max(0, final_am - initial_am)  # Production d'actinides mineurs
+            
+            # Calculer le ratio (éviter division par zéro)
+            if am_production > 0:
+                transmutation_efficiency = reduction / am_production
+            else:
+                transmutation_efficiency = float('inf') if reduction > 0 else 0
+                
+            pu_efficiency_df.loc[sim, 'Efficacité transmutation (Pu/AM)'] = transmutation_efficiency
+        else:
+            pu_efficiency_df.loc[sim, 'Efficacité transmutation (Pu/AM)'] = 0
+    
+    # Sort dataframes by total Pu
+    pu_final_df = pu_final_df.sort_values('Total Pu (%)')
+    pu_reduction_df = pu_reduction_df.sort_values('Reduction (%)', ascending=False)
+    pu_efficiency_df = pu_efficiency_df.sort_values('Taux incinération (%/MWd/kgU)', ascending=False)
+    
+    # Create bar charts
+    plt.figure(figsize=(12, 8))
+    pu_final_df.plot(kind='bar', color='darkred', alpha=0.7)
+    plt.title('Pourcentage final de Pu total par simulation')
+    plt.ylabel('Pourcentage de Pu (%)')
+    plt.xlabel('Simulation')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig('figures/comparison/pu_final_comparison.png', dpi=300)
+    plt.close()
+    
+    plt.figure(figsize=(12, 8))
+    pu_reduction_df['Reduction (%)'].plot(kind='bar', color='green', alpha=0.7)
+    plt.title('Pourcentage de réduction du Pu par simulation')
+    plt.ylabel('Réduction (%)')
+    plt.xlabel('Simulation')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig('figures/comparison/pu_reduction_comparison.png', dpi=300)
+    plt.close()
+    
+    # Nouveau graphique pour le taux d'incinération par unité de burnup
+    plt.figure(figsize=(12, 8))
+    pu_efficiency_df['Taux incinération (%/MWd/kgU)'].plot(kind='bar', color='blue', alpha=0.7)
+    plt.title("Taux d'incinération du Pu par unité de burnup")
+    plt.ylabel('Taux (%/MWd/kgU)')
+    plt.xlabel('Simulation')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig('figures/comparison/pu_incineration_rate.png', dpi=300)
+    plt.close()
+    
+    # Nouveau graphique pour l'efficacité de transmutation
+    plt.figure(figsize=(12, 8))
+    # Remplacer les valeurs infinies par le maximum des valeurs finies * 1.5 pour l'affichage
+    efficiency_values = pu_efficiency_df['Efficacité transmutation (Pu/AM)'].replace([float('inf')], 
+                         pu_efficiency_df['Efficacité transmutation (Pu/AM)'].replace([float('inf')], 0).max() * 1.5)
+    efficiency_values.plot(kind='bar', color='purple', alpha=0.7)
+    plt.title('Efficacité de transmutation (Pu éliminé / AM produits)')
+    plt.ylabel('Ratio Pu/AM')
+    plt.xlabel('Simulation')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig('figures/comparison/pu_transmutation_efficiency.png', dpi=300)
+    plt.close()
+    
+    # Stacked bar chart for isotopic composition
+    plt.figure(figsize=(14, 10))
+    pu_isotope_final_df.plot(kind='bar', stacked=True, 
+                             colormap='viridis',
+                             figsize=(14, 8))
+    plt.title('Composition isotopique finale du Pu par simulation')
+    plt.ylabel('Pourcentage de l\'isotope (%)')
+    plt.xlabel('Simulation')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.legend(title='Isotopes')
+    plt.tight_layout()
+    plt.savefig('figures/comparison/pu_isotope_comparison.png', dpi=300)
+    plt.close()
+    
+    # Analyse statistique approfondie
+    # 1. Regroupement des simulations par performances similaires (clustering)
+    from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+    from scipy.spatial.distance import pdist
+    
+    # Préparation des données pour clustering
+    if len(sim_names) >= 3:  # Besoin d'au moins 3 simulations pour le clustering
+        clustering_data = pd.DataFrame(index=sim_names)
+        clustering_data['Reduction (%)'] = pu_reduction_df['Reduction (%)']
+        clustering_data['Taux incinération'] = pu_efficiency_df['Taux incinération (%/MWd/kgU)']
+        
+        # Normalisation des données
+        from sklearn.preprocessing import StandardScaler
+        scaler = StandardScaler()
+        scaled_data = scaler.fit_transform(clustering_data.fillna(0))
+        
+        # Clustering hiérarchique
+        plt.figure(figsize=(14, 8))
+        Z = linkage(scaled_data, 'ward')
+        dendrogram(Z, labels=clustering_data.index)
+        plt.title('Regroupement des simulations par performances similaires')
+        plt.xlabel('Simulations')
+        plt.ylabel('Distance')
+        plt.tight_layout()
+        plt.savefig('figures/comparison/pu_performance_clustering.png', dpi=300)
+        plt.close()
+        
+        # Identifier les clusters
+        n_clusters = min(4, len(sim_names) // 2) if len(sim_names) >= 4 else 2
+        clusters = fcluster(Z, n_clusters, criterion='maxclust')
+        clustering_data['Cluster'] = clusters
+        
+        # Statistiques par cluster
+        cluster_stats = pd.DataFrame(index=range(1, n_clusters+1))
+        for i in range(1, n_clusters+1):
+            cluster_sims = clustering_data[clustering_data['Cluster'] == i].index
+            cluster_stats.loc[i, 'Nombre de simulations'] = len(cluster_sims)
+            cluster_stats.loc[i, 'Réduction moyenne (%)'] = pu_reduction_df.loc[cluster_sims, 'Reduction (%)'].mean()
+            cluster_stats.loc[i, 'Taux incinération moyen'] = pu_efficiency_df.loc[cluster_sims, 'Taux incinération (%/MWd/kgU)'].mean()
+            cluster_stats.loc[i, 'Simulations'] = ', '.join(cluster_sims)
+    else:
+        cluster_stats = pd.DataFrame()
+    
+    # 2. Analyse de corrélation entre différentes métriques
+    correlation_data = pd.DataFrame(index=sim_names)
+    correlation_data['Reduction (%)'] = pu_reduction_df['Reduction (%)']
+    correlation_data['Taux incinération'] = pu_efficiency_df['Taux incinération (%/MWd/kgU)']
+    correlation_data['Pu-239 final'] = pu_isotope_final_df['Pu-239']
+    correlation_data['Pu-241 final'] = pu_isotope_final_df['Pu-241']
+    
+    # Matrice de corrélation
+    plt.figure(figsize=(10, 8))
+    corr_matrix = correlation_data.corr()
+    mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
+    sns.heatmap(corr_matrix, mask=mask, annot=True, cmap='coolwarm', vmin=-1, vmax=1)
+    plt.title('Corrélations entre les différentes métriques de performance')
+    plt.tight_layout()
+    plt.savefig('figures/comparison/pu_metrics_correlation.png', dpi=300)
+    plt.close()
+    
+    # 3. Test statistique pour comparer les top performers
+    top_performers = pu_reduction_df.nlargest(min(5, len(sim_names)), 'Reduction (%)')
+    
+    # Create a comprehensive summary file
+    with open('figures/comparison/pu_incineration_summary.txt', 'w') as f:
+        f.write("Comparaison des performances d'incinération du Plutonium\n")
+        f.write("====================================================\n\n")
+        
+        f.write("Performances classées par réduction relative de Pu :\n")
+        f.write(pu_reduction_df.sort_values('Reduction (%)', ascending=False).to_string())
+        f.write("\n\n")
+        
+        f.write("Pourcentages finaux de Pu total :\n")
+        f.write(pu_final_df.to_string())
+        f.write("\n\n")
+        
+        f.write("Composition isotopique finale du Pu (%) :\n")
+        f.write(pu_isotope_final_df.to_string())
+        f.write("\n\n")
+        
+        f.write("Métriques d'efficacité d'incinération :\n")
+        f.write(pu_efficiency_df.to_string())
+        f.write("\n\n")
+        
+        if not cluster_stats.empty:
+            f.write("Statistiques par groupe de performance similaire :\n")
+            f.write(cluster_stats.to_string())
+            f.write("\n\n")
+        
+        f.write("Top 5 des simulations les plus performantes :\n")
+        f.write(top_performers.to_string())
+        f.write("\n\n")
+        
+        f.write("Matrice de corrélation entre métriques :\n")
+        f.write(corr_matrix.to_string())
+        f.write("\n\n")
+        
+        f.write("Recommandations basées sur l'analyse :\n")
+        f.write("1. Les simulations avec le plus haut taux d'incinération par unité de burnup sont : " + 
+                ", ".join(pu_efficiency_df.nlargest(3, 'Taux incinération (%/MWd/kgU)').index) + "\n")
+        f.write("2. Les simulations avec la meilleure efficacité de transmutation sont : " +
+                ", ".join(pu_efficiency_df.nlargest(3, 'Efficacité transmutation (Pu/AM)').index) + "\n")
+        f.write("3. Les simulations offrant le meilleur compromis entre réduction et efficacité sont : " +
+                ", ".join(top_performers.index[:3]) + "\n")
+    
+    print(f"Comparaison des performances d'incinération du Pu sauvegardée dans figures/comparison/")
+    
+    return {
+        'pu_final': pu_final_df,
+        'pu_reduction': pu_reduction_df,
+        'pu_isotopes': pu_isotope_final_df,
+        'pu_efficiency': pu_efficiency_df
+    }
+
 if __name__ == "__main__":
     # Trouver tous les dossiers de simulation
     simulation_dirs = glob.glob('data/MOXEUS_*')
@@ -399,10 +645,15 @@ if __name__ == "__main__":
         success_count = 0
         failed_count = 0
         
+        # Dictionnaire pour stocker les statistiques de toutes les simulations
+        all_stats = {}
+        
         # Traiter chaque simulation
         for sim_dir in sorted(simulation_dirs):
+            sim_name = os.path.basename(sim_dir)
             stats = process_simulation(sim_dir)
             if stats:
+                all_stats[sim_name] = stats
                 success_count += 1
             else:
                 failed_count += 1
@@ -412,3 +663,9 @@ if __name__ == "__main__":
         print(f"\nRésumé: {success_count}/{total} simulations traitées avec succès.")
         if failed_count > 0:
             print(f"{failed_count} simulations n'ont pas pu être traitées correctement.")
+        
+        # Comparer les performances d'incinération du Pu
+        if success_count > 1:
+            compare_pu_incineration(all_stats)
+        elif success_count == 1:
+            print("Une seule simulation traitée, la comparaison nécessite au moins deux simulations.")

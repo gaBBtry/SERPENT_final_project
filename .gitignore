@@ -3,3 +3,6 @@ figures/*
 
 # cursorignore
 .cursorignore
+
+# mac
+.DS_Store
