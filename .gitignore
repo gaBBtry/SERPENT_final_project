@@ -1,8 +1,17 @@
-# figures à générer
-figures/*
+# Python
+__pycache__/
+*.py[cod]
+venv/
 
-# cursorignore
-.cursorignore
+# Environnement
+.env
 
-# mac
+# IDE
+.vscode/
+.idea/
+
+# Results
+figures/
+
+# System
 .DS_Store
