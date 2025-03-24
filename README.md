@@ -25,17 +25,17 @@ cd SERPENT_final_project
 
 2. Créer un environnement virtuel Python :
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
 3. Activer l'environnement virtuel :
 - Sur Windows :
 ```bash
-.\venv\Scripts\activate
+.\.venv\Scripts\activate
 ```
 - Sur macOS/Linux :
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 4. Installer les dépendances :
@@ -65,7 +65,7 @@ pip install -r requirements.txt
 
 ### Lancement des analyses
 
-1. Assurez-vous que votre environnement virtuel est activé (vous devriez voir `(venv)` au début de votre ligne de commande)
+1. Assurez-vous que votre environnement virtuel est activé (vous devriez voir `(.venv)` au début de votre ligne de commande)
 
 2. Exécutez le script principal :
 ```bash
